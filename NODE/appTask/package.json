@@ -1,5 +1,5 @@
 {
-  "name": "first-app",
+  "name": "app-task",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,8 +7,6 @@
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "express": "^4.19.2",
     "express-validator": "^7.0.1",

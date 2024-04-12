@@ -3,7 +3,7 @@ const {
   getAll,
   update,
   store,
-} = require("../controller/productController");
+} = require("../controler/productControler");
 const {
   validateIdParam,
   validateBodyParam,

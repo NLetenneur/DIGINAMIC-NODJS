@@ -11,7 +11,11 @@ const validateIdParam = [
     ),
 ];
 
-const validateBodyParam = [body("quantity"), body("price"), body("name")];
+const validateBodyParam = [
+  body("quantity").not().isString().notEmpty().isInt({ min: 0 }),
+  body("price").not().isString().notEmpty().isFloat({ min: 0 }),
+  body("name").notEmpty().isString(),
+];
 
 const validate = (req, res, next) => {
   const errors = validationResult(req);
