@@ -1,0 +1,30 @@
+<%- include("_header") %>
+
+      <body>
+            <h1>Edit</h1>
+
+            <form action="/task/update/<%= task.id %>" method="POST">
+                  <label for="titre">Titre</label>
+                  <input id="titre" name="titre" type="text" value="<%=task.titre%>" placeholder="Titre de la tâche" />
+
+                  <br />
+
+                  <label for="description">Description</label>
+                  <input id="description" name="description" type="text" value="<%=task.description%>"
+                        placeholder="Description de la tâche" />
+
+                  <br />
+
+                  <label for="date_debut">Date de début</label>
+                  <input id="date_debut" name="date_debut" type="date" value="<%=task.date_debut%>" />
+                  <br />
+                  <label for="date_fin">Date de fin</label>
+                  <input id="date_fin" name="date_fin" type="date" value="<%=task.date_fin%>" />
+                  <br />
+                  <label for="done">La tâche est-elle terminée ?</label>
+                  <input id="done" name="done" type="radio" value="<%=task.done%>" />
+                  <br />
+                  <button type="submit">Enregistrer</button>
+      </body>
+
+      <%- include("_footer") %>

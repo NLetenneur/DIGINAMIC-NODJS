@@ -1,0 +1,32 @@
+<%- include("_header") %>
+
+  <body>
+    <h1>Create</h1>
+
+    <form action="/task" method="post">
+      <label for="titre">Titre</label>
+      <input id="titre" name="titre" type="text" placeholder="Titre de la tâche" />
+
+      <br />
+
+      <label for="description">Description</label>
+      <input id="description" name="description" type="text" placeholder="Description de la tâche" />
+
+      <br />
+
+      <label for="date_debut">Date de début</label>
+      <input id="date_debut" name="date_debut" type="date" />
+      <br />
+      <label for="date_fin">Date de fin</label>
+      <input id="date_fin" name="date_fin" type="date" />
+
+      <br />
+      <label for="done">La tâche est-elle terminée ?</label>
+      <input id="done" name="done" type="radio" />
+      <br />
+
+      <button type="submit">Enregistrer</button>
+    </form>
+  </body>
+
+  <%- include("_footer") %>
