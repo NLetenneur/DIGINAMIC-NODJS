@@ -1,7 +1,7 @@
-const tasks = require("../repository/taskRepository");
+const Task = require("../model/task.js");
 
 const getAll = (req, res) => {
-  res.json(tasks);
+  Task.findAll().then((tasks) => res.json(tasks));
 };
 
 const store = (req, res) => {
@@ -17,33 +17,37 @@ const store = (req, res) => {
     date_fin: Date.parse(req.body.date_fin),
     done: Boolean(req.body.done),
   };
-  tasks.push(task);
-  res.send(task);
+  Task.create(task)
+    .then((task) => {
+      res.send(task);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
 }; // Créer une tâche
 
 const update = (req, res) => {
-  const id = parseInt(req.params.id);
-  const index = tasks.findIndex((task) => task.id === id);
   const task = {
-    id: id,
-    titre: req.body.titre ?? tasks[index].titre,
-    description: req.body.description ?? tasks[index].description,
-    date_debut: req.body.date_debut ?? tasks[index].date_debut,
-    date_fin: req.body.date_fin ?? tasks[index].date_fin,
-    done: req.body.done ?? tasks[index].done,
+    titre: req.body.titre,
+    description: req.body.description,
+    date_debut: req.body.date_debut,
+    date_fin: req.body.date_fin,
+    done: req.body.done,
   };
 
-  tasks[index] = task;
+  Task.update(task, { where: { id: req.params.id } })
+    .then((task) => res.send(task))
+    .catch((err) => {
+      res.send(err);
+    });
 
   res.send(task);
 }; // modifier
 
 const destroy = (req, res) => {
-  const id = parseInt(req.params.id);
-  const index = tasks.findIndex((task) => task.id === id);
-  tasks.splice(index, 1);
-
-  res.send("task deleted");
+  Task.destroy({ where: { id: req.params.id } }).then(() =>
+    res.send("task deleted")
+  );
 }; // supprimer
 
 module.exports = { destroy, getAll, update, store };

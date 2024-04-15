@@ -1,12 +1,7 @@
 const { body, param, validationResult } = require("express-validator");
-const tasks = require("../repository/taskRepository");
+const tasks = require("../model/task");
 
-const validateIdParam = [
-  param("id")
-    .notEmpty()
-    .isNumeric()
-    .custom((id) => tasks.findIndex((task) => task.id === parseInt(id)) !== -1),
-];
+const validateIdParam = [param("id").notEmpty().isNumeric()];
 
 const validateBodyParam = [
   body("titre")
