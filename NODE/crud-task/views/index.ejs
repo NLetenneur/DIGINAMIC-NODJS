@@ -29,10 +29,10 @@
               <%= tasks[i].description %>
             </td>
             <td>
-              <%= tasks[i].date_debut %>
+              <%= tasks[i].date_debut.toLocaleDateString('en-US') %>
             </td>
             <td>
-              <%= tasks[i].date_fin %>
+              <%= tasks[i].date_fin.toLocaleDateString('en-US') %>
             </td>
             <td>
               <%= tasks[i].done %>
